@@ -11,6 +11,7 @@
 	
     <modules>
         <module>spring5webapp</module>
+        <module>di-demo</module>
     </modules>
 
     <properties>
