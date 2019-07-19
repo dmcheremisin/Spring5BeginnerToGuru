@@ -23,4 +23,10 @@ public class DiDemoApplication {
 		System.out.println(ctx.getBean(SetterInjectedController.class).sayHello());
 	}
 
+	//Hello Controller!
+    //Всем привет!
+    //greeting
+    //greeting
+    //greeting
+
 }

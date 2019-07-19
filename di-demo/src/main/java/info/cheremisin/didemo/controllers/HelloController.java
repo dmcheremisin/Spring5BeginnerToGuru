@@ -1,5 +1,6 @@
 package info.cheremisin.didemo.controllers;
 
+import info.cheremisin.didemo.service.GreetingService;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -8,7 +9,14 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class HelloController {
 
+    private GreetingService greetingService;
+
+    public HelloController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
     public void hello() {
         System.out.println("Hello Controller!");
+        System.out.println(greetingService.sayGreeting());
     }
 }
