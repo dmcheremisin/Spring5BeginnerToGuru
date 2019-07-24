@@ -26,17 +26,31 @@ public class DiDemoApplication {
 		System.out.println(ctx.getBean(SetterInjectedController.class).sayHello());
 
 		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
-		System.out.println("Property: " + fakeDataSource.getUser());
+		System.out.println("Data Source Property: " + fakeDataSource.getUser());
 		System.out.println("Environment Property: " + fakeDataSource.getEnvironmentProperty());
 
 		FakeJmsBroker fakeJmsBroker = ctx.getBean(FakeJmsBroker.class);
-		System.out.println(fakeJmsBroker.getUser());
+		System.out.println("JMS Property: " + fakeJmsBroker.getUser());
 	}
 
-	//Hello Controller!
-    //Всем привет!
-    //greeting
-    //greeting
-    //greeting
+	//--> LifeCycleBean Constructor
+	//--> LifeCycleBean setBeanName
+	//--> LifeCycleBean setBeanFactory
+	//--> LifeCycleBean setApplicationContext
+	//--> LifeCycleBean beforeInit
+	//--> LifeCycleBean postConstruct
+	//--> LifeCycleBean afterPropertiesSet
+	//--> LifeCycleBean afterInit
+	//	Hello Controller!
+	//	Всем привет!
+	//	greeting
+	//	greeting
+	//	greeting
+	//	Data Source Property: dmitrii
+	//	Environment Property: /springapp/logs
+	//	JMS Property: jms
+	//--> LifeCycleBean preDestroy
+	//--> LifeCycleBean destroy
+
 
 }
