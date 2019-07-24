@@ -14,11 +14,15 @@ public class ApplicationPropertiesConfig {
     @Value("${global.application.speed}")
     String speed;
 
+    @Value("${spring.developer.name}")
+    String developerName;
+
     @Bean
     public ApplicationPropertiesSource getApplicationPropSource() {
         ApplicationPropertiesSource source = new ApplicationPropertiesSource();
         source.setGreeting(greeting);
         source.setSpeed(speed);
+        source.setDeveloperName(developerName);
         return source;
     }
 

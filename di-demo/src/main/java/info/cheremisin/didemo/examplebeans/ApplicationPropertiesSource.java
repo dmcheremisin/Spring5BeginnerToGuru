@@ -4,6 +4,7 @@ public class ApplicationPropertiesSource {
 
     private String greeting;
     private String speed;
+    private String developerName;
 
     public String getGreeting() {
         return greeting;
@@ -19,5 +20,13 @@ public class ApplicationPropertiesSource {
 
     public void setSpeed(String speed) {
         this.speed = speed;
+    }
+
+    public String getDeveloperName() {
+        return developerName;
+    }
+
+    public void setDeveloperName(String developerName) {
+        this.developerName = developerName;
     }
 }

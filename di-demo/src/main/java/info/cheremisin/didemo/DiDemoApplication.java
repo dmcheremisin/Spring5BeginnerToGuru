@@ -35,6 +35,7 @@ public class DiDemoApplication {
 
 		ApplicationPropertiesSource applicationPropertiesSource = ctx.getBean(ApplicationPropertiesSource.class);
 		System.out.println("Application property speed: " + applicationPropertiesSource.getSpeed());
+		System.out.println("Developer name: " + applicationPropertiesSource.getDeveloperName());
 	}
 
 	//--> LifeCycleBean Constructor
@@ -54,6 +55,7 @@ public class DiDemoApplication {
 	//	Environment Property: /springapp/logs
 	//	JMS Property: jms
 	//	Application property speed: super fast
+	//	Developer name: Dmitrii
 	//--> LifeCycleBean preDestroy
 	//--> LifeCycleBean destroy
 

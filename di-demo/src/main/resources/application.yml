@@ -1,4 +1,12 @@
 global:
   application:
+    greeting: Привет
+    speed: супер быстро
+
+---
+spring:
+  profiles: en
+global:
+  application:
     greeting: Hello
     speed: super fast
