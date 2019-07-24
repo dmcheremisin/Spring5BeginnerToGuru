@@ -1,0 +1,4 @@
+global:
+  application:
+    greeting: Hello
+    speed: super fast

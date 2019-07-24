@@ -1,0 +1,25 @@
+name: Dmitrii
+
+names: #Comment
+  - Dmitrii
+  - Anna
+  - Mark
+
+pound_sing: "#"
+
+book:
+  author: Lev Tolstoi
+  publisher: Souz
+
+truth: yes
+
+another_truth: True
+
+more_true: true
+
+false: no #no, false, FALSE
+
+string_val: "This is it's quote"
+
+colon_string: "my_courses: one two three"
+
