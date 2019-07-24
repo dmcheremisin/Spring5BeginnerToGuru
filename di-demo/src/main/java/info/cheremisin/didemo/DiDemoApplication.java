@@ -5,6 +5,7 @@ import info.cheremisin.didemo.controllers.HelloController;
 import info.cheremisin.didemo.controllers.PropertyInjectedController;
 import info.cheremisin.didemo.controllers.SetterInjectedController;
 import info.cheremisin.didemo.examplebeans.FakeDataSource;
+import info.cheremisin.didemo.examplebeans.FakeJmsBroker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -27,6 +28,9 @@ public class DiDemoApplication {
 		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
 		System.out.println("Property: " + fakeDataSource.getUser());
 		System.out.println("Environment Property: " + fakeDataSource.getEnvironmentProperty());
+
+		FakeJmsBroker fakeJmsBroker = ctx.getBean(FakeJmsBroker.class);
+		System.out.println(fakeJmsBroker.getUser());
 	}
 
 	//Hello Controller!
