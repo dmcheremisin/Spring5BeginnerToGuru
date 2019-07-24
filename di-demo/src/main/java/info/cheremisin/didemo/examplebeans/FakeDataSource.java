@@ -5,6 +5,7 @@ public class FakeDataSource {
     private String user;
     private String password;
     private String url;
+    private String environmentProperty; // set by [edit configuration -> Environment variables in idea, system variables]
 
     public String getUser() {
         return user;
@@ -28,5 +29,13 @@ public class FakeDataSource {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getEnvironmentProperty() {
+        return environmentProperty;
+    }
+
+    public void setEnvironmentProperty(String environmentProperty) {
+        this.environmentProperty = environmentProperty;
     }
 }

@@ -26,6 +26,7 @@ public class DiDemoApplication {
 
 		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
 		System.out.println("Property: " + fakeDataSource.getUser());
+		System.out.println("Environment Property: " + fakeDataSource.getEnvironmentProperty());
 	}
 
 	//Hello Controller!
