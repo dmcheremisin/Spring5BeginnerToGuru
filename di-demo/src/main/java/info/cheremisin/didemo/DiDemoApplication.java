@@ -4,6 +4,7 @@ import info.cheremisin.didemo.controllers.ConstructorInjectedController;
 import info.cheremisin.didemo.controllers.HelloController;
 import info.cheremisin.didemo.controllers.PropertyInjectedController;
 import info.cheremisin.didemo.controllers.SetterInjectedController;
+import info.cheremisin.didemo.examplebeans.ApplicationPropertiesSource;
 import info.cheremisin.didemo.examplebeans.FakeDataSource;
 import info.cheremisin.didemo.examplebeans.FakeJmsBroker;
 import org.springframework.boot.SpringApplication;
@@ -31,6 +32,9 @@ public class DiDemoApplication {
 
 		FakeJmsBroker fakeJmsBroker = ctx.getBean(FakeJmsBroker.class);
 		System.out.println("JMS Property: " + fakeJmsBroker.getUser());
+
+		ApplicationPropertiesSource applicationPropertiesSource = ctx.getBean(ApplicationPropertiesSource.class);
+		System.out.println("Application property speed: " + applicationPropertiesSource.getSpeed());
 	}
 
 	//--> LifeCycleBean Constructor
@@ -49,6 +53,7 @@ public class DiDemoApplication {
 	//	Data Source Property: dmitrii
 	//	Environment Property: /springapp/logs
 	//	JMS Property: jms
+	//	Application property speed: super fast
 	//--> LifeCycleBean preDestroy
 	//--> LifeCycleBean destroy
 
