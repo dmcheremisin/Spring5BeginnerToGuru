@@ -1,12 +1,12 @@
 package info.cheremisin.recipeapp.controllers;
 
-import info.cheremisin.recipeapp.repositories.CategoryRepository;
-import info.cheremisin.recipeapp.repositories.UnitOfMeasureRepository;
 import info.cheremisin.recipeapp.services.RecipeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@Slf4j
 @Controller
 public class IndexController {
 
@@ -18,6 +18,7 @@ public class IndexController {
 
     @RequestMapping({"", "/", "/index", "/index.html"})
     public String getIndexPage(Model model) {
+        log.debug(" ========== Inside getIndexPage method ========== ");
 
         model.addAttribute("recipes", recipeService.getRecipes());
 
