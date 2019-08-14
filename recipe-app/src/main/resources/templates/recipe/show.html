@@ -71,7 +71,7 @@
                                 <h5>Source:</h5>
                             </div>
                             <div class="col-md-3">
-                                <p th:text="${recipe.source}">30 min</p>
+                                <p th:text="${recipe.source}">WWW</p>
                             </div>
                             <div class="col-md-3">
                                 <h5>URL:</h5>
@@ -93,7 +93,7 @@
                                     <li th:remove="all">1 Cup of milk</li>
                                     <li th:remove="all">1 Teaspoon of chocolate</li>
                                     <li th:each="ingredient : ${recipe.ingredients}"
-                                        th:text="${#strings.concat(ingredient.amount, ' ', ingredient.description)}">
+                                        th:text="${(ingredient.amount + ' ' + ingredient.unitOfMeasure.description + ' ' + ingredient.description)}">
                                         1 Teaspoon of Sugar
                                     </li>
                                 </ul>
