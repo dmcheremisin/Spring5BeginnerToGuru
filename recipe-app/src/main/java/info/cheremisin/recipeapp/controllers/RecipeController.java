@@ -1,12 +1,11 @@
 package info.cheremisin.recipeapp.controllers;
 
+import info.cheremisin.recipeapp.commands.RecipeCommand;
 import info.cheremisin.recipeapp.domain.Recipe;
 import info.cheremisin.recipeapp.services.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class RecipeController {
@@ -22,5 +21,17 @@ public class RecipeController {
         Recipe recipe = recipeService.findById(new Long(id));
         model.addAttribute("recipe", recipe);
         return "recipe/show";
+    }
+
+    @RequestMapping(value = "/recipe/new")
+    public String newRecipe(Model model) {
+        model.addAttribute("recipe", new RecipeCommand());
+        return "recipe/recipeForm";
+    }
+
+    @PostMapping(value = "/recipe")
+    public String createRecipe(@ModelAttribute RecipeCommand recipeCommand) {
+        RecipeCommand recipeCommand1 = recipeService.saveRecipeCommand(recipeCommand);
+        return "redirect:/recipe/show/" + recipeCommand1.getId();
     }
 }
