@@ -22,7 +22,7 @@ public class IngredientController {
     public String getIngredientList(@PathVariable Long id, Model model) {
         log.debug("Getting ingredient list for the recipe id = " + id);
 
-        model.addAttribute("recipe", recipeService.findById(id));
+        model.addAttribute("recipe", recipeService.findCommandById(id));
         return "/recipe/ingredient/list";
     }
 
