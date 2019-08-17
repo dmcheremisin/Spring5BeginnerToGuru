@@ -9,6 +9,7 @@ import info.cheremisin.recipeapp.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
 import java.util.Optional;
 
 @Slf4j
@@ -59,5 +60,24 @@ public class IngredientServiceImpl implements IngredientService {
         Recipe savedRecipe = recipeRepository.save(recipe);
 
         log.debug("Updated ingredient for the recipe id = " + savedRecipe.getId());
+    }
+
+    @Override
+    public void deleteIngredientById(Long recipeId, Long ingredientId) {
+
+        Optional<Recipe> recipeOpt = recipeRepository.findById(recipeId);
+        Recipe recipe = recipeOpt.orElseThrow(() -> new RuntimeException("Recipe not found with id = " + recipeId));
+
+        Iterator<Ingredient> iterator = recipe.getIngredients().iterator();
+        while (iterator.hasNext()) {
+            Ingredient next = iterator.next();
+            if(next.getId().equals(ingredientId)) {
+                recipe.getIngredients().remove(next);
+                break;
+            }
+        }
+
+        recipeRepository.save(recipe);
+
     }
 }
