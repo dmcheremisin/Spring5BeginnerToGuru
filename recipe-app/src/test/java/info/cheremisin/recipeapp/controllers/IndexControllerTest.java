@@ -33,6 +33,8 @@ public class IndexControllerTest {
     @Mock
     RecipeService recipeService;
 
+    MockMvc mockMvc;
+
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
@@ -41,7 +43,7 @@ public class IndexControllerTest {
 
     @Test
     public void testMockMvc() throws Exception {
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
 
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
@@ -64,7 +66,6 @@ public class IndexControllerTest {
 
         //when
         String viewName = indexController.getIndexPage(model);
-
 
         //then
         assertEquals("index", viewName);
