@@ -1,6 +1,7 @@
 package info.cheremisin.recipeapp.services;
 
 import info.cheremisin.recipeapp.commands.IngredientCommand;
+import info.cheremisin.recipeapp.converters.IngredientCommandToIngredient;
 import info.cheremisin.recipeapp.converters.IngredientToIngredientCommand;
 import info.cheremisin.recipeapp.converters.UnitOfMeasureToUnitOfMeasureCommand;
 import info.cheremisin.recipeapp.domain.Ingredient;
@@ -25,7 +26,11 @@ public class IngredientServiceImplTest {
     @Mock
     UnitOfMeasureToUnitOfMeasureCommand uomConverter;
 
+    @Mock
     IngredientToIngredientCommand ingredientToIngredientCommand;
+
+    @Mock
+    IngredientCommandToIngredient ingredientCommandToIngredient;
 
     IngredientService ingredientService;
 
@@ -34,7 +39,7 @@ public class IngredientServiceImplTest {
         MockitoAnnotations.initMocks(this);
 
         ingredientToIngredientCommand = new IngredientToIngredientCommand(uomConverter);
-        ingredientService = new IngredientServiceImpl(recipeRepository, ingredientToIngredientCommand);
+        ingredientService = new IngredientServiceImpl(recipeRepository, ingredientToIngredientCommand, ingredientCommandToIngredient);
     }
 
     @Test
