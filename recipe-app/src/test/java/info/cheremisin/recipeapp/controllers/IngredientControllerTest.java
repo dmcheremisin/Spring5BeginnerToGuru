@@ -12,11 +12,9 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
 
 import java.util.HashSet;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -92,8 +90,6 @@ public class IngredientControllerTest {
 
     @Test
     public void saveIngredientTest() throws Exception {
-        IngredientCommand ingredientCommand = new IngredientCommand();
-
         //when
         mockMvc.perform(post("/recipe/1/ingredient")
                             .contentType(MediaType.APPLICATION_FORM_URLENCODED)
@@ -104,5 +100,18 @@ public class IngredientControllerTest {
                 .andExpect(view().name("redirect:/recipe/1/ingredients"));
 
         verify(ingredientService, times(1)).saveIngredientCommand(any());
+    }
+
+    @Test
+    public void testNewIngredientForm() throws Exception {
+        when(unitOfMeasureService.listAllUoms()).thenReturn(new HashSet<>());
+
+        mockMvc.perform(get("/recipe/1/ingredient/new"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("/recipe/ingredient/ingredientForm"))
+                .andExpect(model().attributeExists("ingredient"))
+                .andExpect(model().attributeExists("uomList"));
+
+        verify(unitOfMeasureService, times(1)).listAllUoms();
     }
 }

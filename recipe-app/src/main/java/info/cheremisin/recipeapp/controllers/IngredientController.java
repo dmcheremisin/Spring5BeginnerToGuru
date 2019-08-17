@@ -1,16 +1,14 @@
 package info.cheremisin.recipeapp.controllers;
 
 import info.cheremisin.recipeapp.commands.IngredientCommand;
+import info.cheremisin.recipeapp.commands.UnitOfMeasureCommand;
 import info.cheremisin.recipeapp.services.IngredientService;
 import info.cheremisin.recipeapp.services.RecipeService;
 import info.cheremisin.recipeapp.services.UnitOfMeasureService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @Controller
@@ -58,6 +56,18 @@ public class IngredientController {
     public String saveIngredient(@ModelAttribute IngredientCommand ingredientCommand) {
         ingredientService.saveIngredientCommand(ingredientCommand);
         return "redirect:/recipe/" + ingredientCommand.getRecipeId() + "/ingredients";
+    }
+
+    @GetMapping
+    @RequestMapping("/recipe/{recipeId}/ingredient/new")
+    public String newIngredient(@PathVariable String recipeId, Model model){
+        IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setRecipeId(Long.valueOf(recipeId));
+        ingredientCommand.setUnitOfMeasure(new UnitOfMeasureCommand());
+
+        model.addAttribute("ingredient", ingredientCommand);
+        model.addAttribute("uomList",  unitOfMeasureService.listAllUoms());
+        return "/recipe/ingredient/ingredientForm";
     }
 
 }
