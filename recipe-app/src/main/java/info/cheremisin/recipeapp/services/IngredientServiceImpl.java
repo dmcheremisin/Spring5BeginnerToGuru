@@ -73,6 +73,8 @@ public class IngredientServiceImpl implements IngredientService {
             Ingredient next = iterator.next();
             if(next.getId().equals(ingredientId)) {
                 recipe.getIngredients().remove(next);
+                next.setRecipe(null);
+                next.setUnitOfMeasure(null);
                 break;
             }
         }
