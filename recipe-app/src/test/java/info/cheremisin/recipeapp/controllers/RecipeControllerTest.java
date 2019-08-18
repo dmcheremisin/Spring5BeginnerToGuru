@@ -2,6 +2,7 @@ package info.cheremisin.recipeapp.controllers;
 
 import info.cheremisin.recipeapp.commands.RecipeCommand;
 import info.cheremisin.recipeapp.domain.Recipe;
+import info.cheremisin.recipeapp.exceptions.NotFoundException;
 import info.cheremisin.recipeapp.services.RecipeService;
 import org.junit.Before;
 import org.junit.Test;
@@ -95,5 +96,15 @@ public class RecipeControllerTest {
                 .andExpect(view().name("redirect:/"));
 
         verify(recipeService, times(1)).deleteById(anyLong());
+    }
+
+    @Test
+    public void testGetNotFoundRecipe() throws Exception {
+        when(recipeService.findById(anyLong())).thenThrow(new NotFoundException("Recipe not found"));
+
+        mockMvc.perform(get("/recipe/4/show"))
+                .andExpect(status().isNotFound())
+                .andExpect(view().name("404error"));
+
     }
 }
