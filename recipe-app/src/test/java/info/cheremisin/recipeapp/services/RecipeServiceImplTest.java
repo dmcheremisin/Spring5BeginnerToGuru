@@ -4,6 +4,7 @@ import info.cheremisin.recipeapp.commands.RecipeCommand;
 import info.cheremisin.recipeapp.converters.RecipeCommandToRecipe;
 import info.cheremisin.recipeapp.converters.RecipeToRecipeCommand;
 import info.cheremisin.recipeapp.domain.Recipe;
+import info.cheremisin.recipeapp.exceptions.NotFoundException;
 import info.cheremisin.recipeapp.repositories.RecipeRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -101,6 +102,13 @@ public class RecipeServiceImplTest {
 
         //then
         verify(recipeRepository, times(1)).deleteById(anyLong());
+    }
+
+
+    @Test(expected = NotFoundException.class)
+    public void testGetRecipe() {
+        when(recipeRepository.findById(anyLong())).thenReturn(Optional.empty());
+        recipeService.findById(1L);
     }
 
 }

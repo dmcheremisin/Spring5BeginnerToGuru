@@ -4,6 +4,7 @@ import info.cheremisin.recipeapp.commands.RecipeCommand;
 import info.cheremisin.recipeapp.converters.RecipeCommandToRecipe;
 import info.cheremisin.recipeapp.converters.RecipeToRecipeCommand;
 import info.cheremisin.recipeapp.domain.Recipe;
+import info.cheremisin.recipeapp.exceptions.NotFoundException;
 import info.cheremisin.recipeapp.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,7 @@ public class RecipeServiceImpl implements RecipeService {
     public Recipe findById(Long id) {
         Optional<Recipe> recipe = recipeRepository.findById(id);
 
-        return recipe.orElseThrow(() -> new RuntimeException("Recipe is not found"));
+        return recipe.orElseThrow(() -> new NotFoundException("Recipe is not found with id = " + id));
     }
 
     @Override
