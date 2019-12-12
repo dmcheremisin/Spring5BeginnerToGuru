@@ -14,6 +14,8 @@
         <module>di-demo</module>
         <module>jokeapp</module>
         <module>recipe-app</module>
+        <module>web-flux</module>
+        <module>web-services</module>
     </modules>
 
     <properties>
