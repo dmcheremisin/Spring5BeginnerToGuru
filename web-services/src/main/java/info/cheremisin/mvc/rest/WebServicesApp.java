@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MvcrestappApplication {
+public class WebServicesApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(MvcrestappApplication.class, args);
+        SpringApplication.run(WebServicesApp.class, args);
     }
 
 }

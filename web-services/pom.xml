@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>info.cheremisin.mvc.rest</groupId>
-    <artifactId>mvcrestapp</artifactId>
+    <artifactId>web-services</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mvcrestapp</name>
+    <name>web-services</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
