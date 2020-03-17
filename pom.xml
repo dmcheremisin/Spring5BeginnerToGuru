@@ -16,6 +16,7 @@
         <module>recipe-app</module>
         <module>web-flux</module>
         <module>web-services</module>
+        <module>jdbc-template</module>
     </modules>
 
     <properties>
