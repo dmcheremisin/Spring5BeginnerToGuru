@@ -5,12 +5,10 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.UUID;
 
-@Getter
-@Setter
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 public class JmsMessage implements Serializable {
 
     public static final long serialVersionUID = 2786966509880610246L;
