@@ -1,5 +1,6 @@
 package info.cheremisin.recipeapp.controllers;
 
+import info.cheremisin.recipeapp.actuator.RecipeCounterMetrics;
 import info.cheremisin.recipeapp.commands.RecipeCommand;
 import info.cheremisin.recipeapp.domain.Recipe;
 import info.cheremisin.recipeapp.exceptions.NotFoundException;
@@ -24,6 +25,8 @@ public class RecipeControllerTest {
     public static final String RECIPE_RECIPE_FORM = "recipe/recipeForm";
     @Mock
     RecipeService recipeService;
+    @Mock
+    RecipeCounterMetrics recipeCounterMetrics;
 
     RecipeController controller;
 
@@ -33,7 +36,7 @@ public class RecipeControllerTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        controller = new RecipeController(recipeService);
+        controller = new RecipeController(recipeService, recipeCounterMetrics);
         mockMvc = MockMvcBuilders.standaloneSetup(controller)
                 .setControllerAdvice(new ControllerExceptionHandler())
                 .build();

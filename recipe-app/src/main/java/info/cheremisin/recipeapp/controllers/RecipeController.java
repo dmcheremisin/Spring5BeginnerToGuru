@@ -1,9 +1,11 @@
 package info.cheremisin.recipeapp.controllers;
 
+import info.cheremisin.recipeapp.actuator.RecipeCounterMetrics;
 import info.cheremisin.recipeapp.commands.RecipeCommand;
 import info.cheremisin.recipeapp.domain.Recipe;
 import info.cheremisin.recipeapp.exceptions.NotFoundException;
 import info.cheremisin.recipeapp.services.RecipeService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -16,17 +18,17 @@ import javax.validation.Valid;
 
 @Slf4j
 @Controller
+@RequiredArgsConstructor
 public class RecipeController {
 
     public static final String RECIPE_RECIPE_FORM = "recipe/recipeForm";
-    private RecipeService recipeService;
 
-    public RecipeController(RecipeService recipeService) {
-        this.recipeService = recipeService;
-    }
+    private final RecipeService recipeService;
+    private final RecipeCounterMetrics recipeCounterMetrics;
 
     @GetMapping("/recipe/{id}/show")
     public String getRecipeById(@PathVariable Long id, Model model) {
+        recipeCounterMetrics.incrementShown();
         Recipe recipe = recipeService.findById(new Long(id));
         model.addAttribute("recipe", recipe);
         return "recipe/show";
