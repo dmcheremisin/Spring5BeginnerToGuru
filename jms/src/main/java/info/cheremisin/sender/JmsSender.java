@@ -18,7 +18,7 @@ public class JmsSender {
 
     @Scheduled(fixedRate = 2000)
     public void sendMessage() {
-        System.out.println("I'm sending message");
+        System.out.println("!!! I'm sending message");
 
         JmsMessage message = JmsMessage.builder()
                 .id(UUID.randomUUID())
@@ -27,7 +27,7 @@ public class JmsSender {
 
         jmsTemplate.convertAndSend(MY_QUEUE, message);
 
-        System.out.println("Message was sent");
+        System.out.println(">>> Message was sent!");
 
     }
 }
