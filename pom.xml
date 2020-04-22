@@ -17,6 +17,7 @@
         <module>web-flux</module>
         <module>web-services</module>
         <module>jdbc-template</module>
+        <module>jms</module>
     </modules>
 
     <properties>
