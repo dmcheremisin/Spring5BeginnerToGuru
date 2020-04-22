@@ -11,14 +11,16 @@ public class JmsApplication {
 
     public static void main(String[] args) throws Exception {
 
-        ActiveMQServer server = ActiveMQServers.newActiveMQServer(
-                new ConfigurationImpl()
-                        .setPersistenceEnabled(false)
-                        .setJournalDirectory("target/data/journal")
-                        .setSecurityEnabled(false)
-                        .addAcceptorConfiguration("invm", "vm://0")
-        );
-        server.start();
+//        Springboot auto configures next lines, base on dependencies: artemis-server and artemis-jms-server
+//
+//        ActiveMQServer server = ActiveMQServers.newActiveMQServer(
+//                new ConfigurationImpl()
+//                        .setPersistenceEnabled(false)
+//                        .setJournalDirectory("target/data/journal")
+//                        .setSecurityEnabled(false)
+//                        .addAcceptorConfiguration("invm", "vm://0")
+//        );
+//        server.start();
 
         SpringApplication.run(JmsApplication.class, args);
     }

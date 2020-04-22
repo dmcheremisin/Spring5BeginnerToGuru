@@ -62,8 +62,7 @@ public class JmsSender {
             }
         });
 
-        System.out.println(">>> Sender Received message: ");
-        System.out.println(receivedMessage.getBody(String.class));
+        System.out.println(">>> Sender received message: " + receivedMessage.getBody(String.class));
         //System.out.println(objectMapper.readValue((receivedMessage.getBody(String.class)), JmsMessage.class));
     }
 }
